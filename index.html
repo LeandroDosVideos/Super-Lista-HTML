@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>LEANDRODASLIVES (YOUTUBE LIVES)</title>
+
+<style>
+* {
+  color: #ffffff;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #000;
+  margin: 0;
+
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+}
+
+.titulo-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* INPUT */
+input {
+  padding: 12px;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  outline: none;
+  box-sizing: border-box;
+  background: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  box-shadow:
+    0 0 5px #fff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+}
+
+input::placeholder {
+  color: #ffffff;
+}
+
+input:focus {
+  box-shadow:
+    0 0 10px #fff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff;
+}
+
+/* STATUS */
+#status {
+  margin: 15px 0 25px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* COLUNAS */
+.coluna {
+  background: #000;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  border: 2px solid #fff;
+
+  box-shadow:
+    0 0 5px #fff,
+    0 0 15px #00ffff,
+    0 0 25px #00ffff;
+}
+
+.coluna h3 {
+  text-align: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.seta {
+  float: right;
+  transition: 0.3s;
+}
+
+/* CONTEÚDO */
+.conteudo-coluna {
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 0.4s ease;
+}
+
+.coluna.fechado .conteudo-coluna {
+  max-height: 0;
+}
+
+.coluna.fechado .seta {
+  transform: rotate(-90deg);
+}
+
+/* BOTÕES - NEON MODERADO */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+  margin: 6px 0;
+  padding: 12px;
+
+  background: #000;
+  border: 2px solid #fff;
+  cursor: pointer;
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 3px #ffffff,
+    0 0 6px #00ffff;
+
+  box-shadow:
+    0 0 4px #ffffff,
+    0 0 8px #00ffff;
+
+  transition: 0.2s ease;
+
+  white-space: normal;
+  word-break: break-word;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+  background: #111;
+
+  box-shadow:
+    0 0 6px #ffffff,
+    0 0 12px #00ffff,
+    0 0 18px #00ffff;
+}
+
+/* ANIMAÇÃO */
+@keyframes neonPulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.animar {
+  animation: neonPulse 0.8s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div class="titulo-container">
+  <h1 class="titulo">
+    SUPER LIVE DE PEDIDOS DOS JOGOS NO LINUX → PESQUISE O JOGO → CLIQUE → COLE NO CHAT DA LIVE
+  </h1>
+</div>
+
+<input type="text" id="busca" placeholder="PESQUISAR JOGO..." onkeyup="filtrar()">
+
+<div id="status"></div>
+
+<div class="container">
+
+  <div class="coluna fechado">
+    <h3 onclick="toggleColuna(this)">PC <span class="seta">▶</span></h3>
+    <div class="conteudo-coluna">
+      <button class="btn">SUPER LIVE DE PEDIDOS DOS JOGOS NO LINUX → PESQUISE O JOGO → CLIQUE → COLE NO CHAT DA LIVE</button>
+      <button class="btn">!jogo Valorant - PC</button>
+      <button class="btn">!jogo CS2 - PC</button>
+    </div>
+  </div>
+
+  <div class="coluna fechado">
+    <h3 onclick="toggleColuna(this)">PS5 <span class="seta">▶</span></h3>
+    <div class="conteudo-coluna">
+      <button class="btn">!jogo FIFA 24 - PS5</button>
+      <button class="btn">!jogo Spider-Man - PS5</button>
+      <button class="btn">!jogo God of War - PS5</button>
+    </div>
+  </div>
+
+  <div class="coluna fechado">
+    <h3 onclick="toggleColuna(this)">Xbox <span class="seta">▶</span></h3>
+    <div class="conteudo-coluna">
+      <button class="btn">!jogo Halo - Xbox</button>
+      <button class="btn">!jogo Forza Horizon - Xbox</button>
+      <button class="btn">!jogo Fortnite - Xbox</button>
+    </div>
+  </div>
+
+  <div class="coluna fechado">
+    <h3 onclick="toggleColuna(this)">Mobile <span class="seta">▶</span></h3>
+    <div class="conteudo-coluna">
+      <button class="btn">!jogo Free Fire - Mobile</button>
+      <button class="btn">!jogo COD Mobile - Mobile</button>
+      <button class="btn">!jogo PUBG - Mobile</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll(".btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    navigator.clipboard.writeText(btn.innerText).then(() => {
+      const status = document.getElementById("status");
+      status.innerText = "COPIADO: " + btn.innerText;
+
+      status.classList.remove("animar");
+      void status.offsetWidth;
+      status.classList.add("animar");
+    });
+  });
+});
+
+function toggleColuna(titulo) {
+  const coluna = titulo.parentElement;
+  const seta = titulo.querySelector(".seta");
+
+  coluna.classList.toggle("fechado");
+
+  if (coluna.classList.contains("fechado")) {
+    seta.innerText = "▶";
+  } else {
+    seta.innerText = "▼";
+  }
+}
+
+function filtrar() {
+  const termo = document.getElementById("busca").value.toLowerCase();
+  const colunas = document.querySelectorAll(".coluna");
+
+  colunas.forEach(coluna => {
+    const botoes = coluna.querySelectorAll(".btn");
+    let temResultado = false;
+
+    botoes.forEach(btn => {
+      const texto = btn.innerText.toLowerCase();
+
+      if (texto.includes(termo)) {
+        btn.style.display = "flex";
+        temResultado = true;
+      } else {
+        btn.style.display = "none";
+      }
+    });
+
+    const seta = coluna.querySelector(".seta");
+
+    if (termo.length > 0) {
+      if (temResultado) {
+        coluna.classList.remove("fechado");
+        if (seta) seta.innerText = "▼";
+        coluna.style.display = "block";
+      } else {
+        coluna.style.display = "none";
+      }
+    } else {
+      coluna.style.display = "block";
+      coluna.classList.add("fechado");
+      if (seta) seta.innerText = "▶";
+
+      botoes.forEach(btn => btn.style.display = "flex");
+    }
+  });
+}
+</script>
+
+</body>
+</html>
