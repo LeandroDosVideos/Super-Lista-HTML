@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>LEANDRODASLIVES LINUX - YOUTUBE LIVE</title>
+<title>LEANDRODASLIVES - YOUTUBE LIVES</title>
 
 <style>
 * {
@@ -186,7 +186,7 @@ input:focus {
 
 <div class="titulo-container">
   <h1 class="titulo">
-    SUPER LIVE DE PEDIDOS DOS JOGOS NO LINUX → PESQUISE O NOME DO JOGO → CLIQUE NO BOTÃO PARA COPIAR → COLE NO CHAT DA LIVE NO YOUTUVE!!!
+    SUPER LIVE DE PEDIDOS DOS JOGOS NO LINUX → PESQUISE O NOME DO JOGO → CLIQUE NO BOTÃO PARA COPIAR → COLE NO CHAT DA LIVE NO YOUTUBE!!!
   </h1>
 </div>
 
@@ -239,7 +239,7 @@ document.querySelectorAll(".btn").forEach(btn => {
   btn.addEventListener("click", () => {
     navigator.clipboard.writeText(btn.innerText).then(() => {
       const status = document.getElementById("status");
-      status.innerText = "COPIADO: " + btn.innerText;
+      status.innerText = "O NOME DO JOGO QUE VOCÊ CLICOU NO BOTÃO FOI COPIADO COM SUCESSO : " + btn.innerText;
 
       status.classList.remove("animar");
       void status.offsetWidth;
