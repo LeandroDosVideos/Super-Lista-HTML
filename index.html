@@ -112,12 +112,12 @@ input:focus {
 /* CONTEÚDO */
 .conteudo-coluna {
   overflow: hidden;
-  max-height: 1000px;
+  max-height: 0;
   transition: max-height 0.4s ease;
 }
 
-.coluna.fechado .conteudo-coluna {
-  max-height: 0;
+.coluna:not(.fechado) .conteudo-coluna {
+  max-height: 999999px;
 }
 
 .coluna.fechado .seta {
@@ -179,6 +179,11 @@ input:focus {
 .animar {
   animation: neonPulse 0.8s ease;
 }
+
+.hidden {
+  display: none !important;
+}
+
 </style>
 </head>
 
@@ -7150,70 +7155,117 @@ input:focus {
 </div>
 
 <script>
-document.querySelectorAll(".btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    navigator.clipboard.writeText(btn.innerText).then(() => {
-      const status = document.getElementById("status");
-      status.innerText = "O NOME DO JOGO QUE VOCÊ CLICOU NO BOTÃO FOI COPIADO COM SUCESSO : " + btn.innerText;
+const status = document.getElementById("status");
+const busca = document.getElementById("busca");
 
-      status.classList.remove("animar");
-      void status.offsetWidth;
+const colunas = [...document.querySelectorAll(".coluna")];
+
+const dados = colunas.map(coluna => {
+  return {
+    coluna,
+    seta: coluna.querySelector(".seta"),
+    botoes: [...coluna.querySelectorAll(".btn")]
+  };
+});
+
+/* COPIAR TEXTO */
+document.addEventListener("click", e => {
+
+  const btn = e.target.closest(".btn");
+
+  if (!btn) return;
+
+  navigator.clipboard.writeText(btn.innerText).then(() => {
+
+    status.innerText =
+      "O NOME DO JOGO QUE VOCÊ CLICOU NO BOTÃO FOI COPIADO COM SUCESSO : " +
+      btn.innerText;
+
+    status.classList.remove("animar");
+
+    requestAnimationFrame(() => {
       status.classList.add("animar");
     });
   });
 });
 
+/* ABRIR / FECHAR COLUNA */
 function toggleColuna(titulo) {
+
   const coluna = titulo.parentElement;
   const seta = titulo.querySelector(".seta");
 
   coluna.classList.toggle("fechado");
 
-  if (coluna.classList.contains("fechado")) {
-    seta.innerText = "▶";
-  } else {
-    seta.innerText = "▼";
-  }
+  seta.innerText =
+    coluna.classList.contains("fechado")
+      ? "▶"
+      : "▼";
 }
 
-function filtrar() {
-  const termo = document.getElementById("busca").value.toLowerCase();
-  const colunas = document.querySelectorAll(".coluna");
+/* DEBOUNCE */
+function debounce(fn, delay) {
 
-  colunas.forEach(coluna => {
-    const botoes = coluna.querySelectorAll(".btn");
+  let timer;
+
+  return (...args) => {
+
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn(...args);
+    }, delay);
+  };
+}
+
+/* FILTRO OTIMIZADO */
+const filtrar = debounce(() => {
+
+  const termo = busca.value.trim().toLowerCase();
+
+  const pesquisando = termo.length > 0;
+
+  for (const item of dados) {
+
     let temResultado = false;
 
-    botoes.forEach(btn => {
-      const texto = btn.innerText.toLowerCase();
+    for (const btn of item.botoes) {
 
-      if (texto.includes(termo)) {
-        btn.style.display = "flex";
+      const visivel =
+        !pesquisando ||
+        btn.textContent.toLowerCase().includes(termo);
+
+      btn.classList.toggle("hidden", !visivel);
+
+      if (visivel) {
         temResultado = true;
-      } else {
-        btn.style.display = "none";
       }
-    });
-
-    const seta = coluna.querySelector(".seta");
-
-    if (termo.length > 0) {
-      if (temResultado) {
-        coluna.classList.remove("fechado");
-        if (seta) seta.innerText = "▼";
-        coluna.style.display = "block";
-      } else {
-        coluna.style.display = "none";
-      }
-    } else {
-      coluna.style.display = "block";
-      coluna.classList.add("fechado");
-      if (seta) seta.innerText = "▶";
-
-      botoes.forEach(btn => btn.style.display = "flex");
     }
-  });
-}
+
+    item.coluna.classList.toggle("hidden", pesquisando && !temResultado);
+
+    if (pesquisando && temResultado) {
+
+      item.coluna.classList.remove("fechado");
+
+      if (item.seta) {
+        item.seta.innerText = "▼";
+      }
+
+    } else if (!pesquisando) {
+
+      item.coluna.classList.add("fechado");
+
+      if (item.seta) {
+        item.seta.innerText = "▶";
+      }
+    }
+  }
+
+}, 120);
+
+/* EVENTO INPUT */
+busca.addEventListener("input", filtrar);
 </script>
 
 </body>
