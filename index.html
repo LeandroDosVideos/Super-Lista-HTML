@@ -3,111 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live - @LeandroDasLives</title>
+    <title>LEANDRODASLIVES SUPER YOUTUBE CHANNEL - SUPER SISTEMA ARVORE RETRO</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f0f0f;
+            background-color: #121212;
             color: #ffffff;
-            padding: 15px;
-        }
-        header {
+            font-family: Arial, sans-serif;
             text-align: center;
-            margin-bottom: 15px;
+            margin: 0;
+            padding: 20px;
         }
-        header h1 {
-            color: #ff0000;
-            font-size: 1.8rem;
+
+        /* Título em Branco, Negrito e Maiúsculo */
+        .titulo-canal {
+            color: #FFFFFF;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 22px;
+            margin-bottom: 20px;
         }
-        header p {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-        .stream-container {
+
+        /* Contentor para colocar o vídeo e o chat lado a lado */
+        .container-live {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .video-box {
-            flex: 3;
+
+        .video-container {
+            flex: 2;
             min-width: 320px;
+            height: 500px;
         }
-        .chat-box {
+
+        .chat-container {
             flex: 1;
-            min-width: 320px;
+            min-width: 300px;
+            height: 500px;
         }
-        /* Container responsivo do player 16:9 */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 1px solid #272727;
-            background-color: #000;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        iframe {
             width: 100%;
             height: 100%;
-            border: 0;
-        }
-        /* Caixa de chat do YouTube */
-        .chat-box iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 550px;
-            border: 1px solid #272727;
-            border-radius: 10px;
-            background-color: #181818;
-        }
-        /* Ajuste automático para celulares */
-        @media (max-width: 900px) {
-            .stream-container {
-                flex-direction: column;
-            }
-            .chat-box iframe {
-                height: 480px;
-            }
+            border: none;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>@LeandroDasLives</h1>
-        <p>Transmissão ao vivo e Chat interativo</p>
-    </header>
+    <!-- TÍTULO DA PÁGINA -->
+    <h1 class="titulo-canal">LEANDRODASLIVES SUPER YOUTUBE CHANNEL - SUPER SISTEMA ARVORE RETRO</h1>
 
-    <div class="stream-container">
-        <!-- Player do Vídeo / Live de Teste -->
-        <div class="video-box">
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/_9Ho31qGSqw?autoplay=1" 
-                    title="Live LeandroDasLives" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+    <!-- ÁREA DA LIVE E CHAT COM O ID ATUALIZADO -->
+    <div class="container-live">
+        <!-- VÍDEO DA LIVE -->
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/_9Ho31qGSqw?autoplay=1" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
 
-        <!-- Chat da Live de Teste -->
-        <div class="chat-box">
+        <!-- CHAT DA LIVE -->
+        <div class="chat-container">
             <iframe 
-                src="https://www.youtube.com/live_chat?v=_9Ho31qGSqw&embed_domain=leandrodosvideos.github.io" 
-                title="Chat ao Vivo">
+                src="https://www.youtube.com/live_chat?v=_9Ho31qGSqw&embed_domain=leandrodosvideos.github.io">
             </iframe>
         </div>
     </div>
