@@ -3,79 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEANDRODASLIVES SUPER YOUTUBE CHANNEL - SUPER SISTEMA ARVORE RETRO ULTRA TOPZERA</title>
+    <title>Busca de Jogos - Árvore Retro</title>
+    <!-- Importando Bootstrap 5 para estilização -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
             color: #ffffff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container-stream {
+            max-width: 900px;
+            margin: 20px auto;
             padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-
-        /* Título em Branco, Negrito e Maiúsculo */
-        .titulo-canal {
-            color: #FFFFFF;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 22px;
-            margin-bottom: 20px;
+        .stream-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #2d2d2d;
         }
-
-        /* Contentor para colocar o vídeo e o chat lado a lado */
-        .container-live {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .video-container {
-            flex: 2;
-            min-width: 320px;
-            height: 500px;
-        }
-
-        .chat-container {
-            flex: 1;
-            min-width: 300px;
-            height: 500px;
-        }
-
-        iframe {
+        .stream-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            border: 0;
+        }
+        .chat-mock {
+            width: 100%;
+            height: 150px;
+            background: #2d2d2d;
             border-radius: 8px;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .search-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #0dcaf0;
+            text-align: center;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .search-box-container {
+            position: relative;
+        }
+        #gameSearchInput {
+            background-color: #2b2b2b;
+            color: #fff;
+            border: 2px solid #444;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+        #gameSearchInput:focus {
+            background-color: #2b2b2b;
+            color: #fff;
+            border-color: #0dcaf0;
+            box-shadow: none;
+        }
+        #gameSearchInput::placeholder {
+            color: #888;
+            font-size: 0.85rem;
+        }
+        .suggestions-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #2b2b2b;
+            border: 1px solid #444;
+            border-top: none;
+            max-height: 220px;
+            overflow-y: auto;
+            border-radius: 0 0 6px 6px;
+            display: none;
+        }
+        .suggestion-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        .suggestion-item:hover, .suggestion-item.active {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+        .copy-feedback {
+            font-size: 0.8rem;
+            color: #198754;
+            text-align: center;
+            margin-top: 5px;
+            height: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- TÍTULO DA PÁGINA -->
-    <h1 class="titulo-canal">LEANDRODASLIVES SUPER YOUTUBE CHANNEL - SUPER SISTEMA ARVORE RETRO ULTRA TOPZERA</h1>
-
-    <!-- ÁREA DA LIVE E CHAT COM O ID ATUALIZADO -->
-    <div class="container-live">
-        <!-- VÍDEO DA LIVE -->
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/_9Ho31qGSqw?autoplay=1" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
+    <div class="container container-stream">
+        <!-- Player da Live Integrado (YouTube) -->
+        <div class="stream-container">
+            <iframe src="https://www.youtube.com/embed/_9Ho31qGSqw" 
+                    title="Live do YouTube" 
+                    allowfullscreen>
             </iframe>
         </div>
 
-        <!-- CHAT DA LIVE -->
-        <div class="chat-container">
-            <iframe 
-                src="https://www.youtube.com/live_chat?v=_9Ho31qGSqw&embed_domain=leandrodosvideos.github.io">
-            </iframe>
+        <!-- Chat da Live (Mockup) -->
+        <div class="chat-mock">
+            <strong>Chat da Live:</strong><br>
+            <span style="color: #6c757d;">[19:48] Viewer1: Salve Leandro!</span><br>
+            <span style="color: #6c757d;">[19:48] Viewer2: Manda aquele briga de rua snes!</span>
+        </div>
+
+        <hr class="border-secondary my-4">
+
+        <!-- SISTEMA DE BUSCA DE JOGOS -->
+        <div class="search-section">
+            <div class="search-title">
+                SISTEMA DE BUSCA DE JOGOS ARVORE RETRO : DISPOVINEL = FBNEO E SNES
+            </div>
+            
+            <div class="search-box-container">
+                <input type="text" id="gameSearchInput" class="form-control" placeholder="DIGITE AQUI O NOME DO JOGO PARA FAZER A BUSCA NO SISTEMA ARVORE RETRO!!!" autocomplete="off">
+                <div id="suggestionsList" class="suggestions-list"></div>
+            </div>
+            <div id="copyFeedback" class="copy-feedback"></div>
         </div>
     </div>
 
+    <script>
+        // Dados organizados: primeiro FBNEO, depois SNES
+        const rawJogosList = [
+            // --- FBNEO ---
+            "#jogo {'88 Games -> [88games]} fbneo",
+            "#jogo {'96 Flag Rally -> [flagrall]} fbneo",
+            "#jogo {'99: The Last War (bootleg) -> [99lstwarb]} fbneo",
+            "#jogo {'99: The Last War (Kyugo) -> [99lstwark]} fbneo",
+            "#jogo {'99: The Last War (set 1) -> [99lstwar]} fbneo",
+            "#jogo {'99: The Last War (set 2) -> [99lstwara]} fbneo",
+            "#jogo {10-Yard Fight '85 (US, Taito license) -> [10yard85]} fbneo",
+            "#jogo {10-Yard Fight (Japan) -> [10yardj]} fbneo",
+            "#jogo {10-Yard Fight (World, set 1) -> [10yard]} fbneo",
+            "#jogo {1000 Miglia: Great 1000 Miles Rally (94/05/10) -> [gtmro]} fbneo",
+            "#jogo {1000 Miglia: Great 1000 Miles Rally (94/05/26) -> [gtmrb]} fbneo",
+            "#jogo {1000 Miglia: Great 1000 Miles Rally (94/06/13) -> [gtmra]} fbneo",
+            "#jogo {1000 Miglia: Great 1000 Miles Rally (Taiwan 94/07/18) -> [gtmr]} fbneo",
+            "#jogo {18 Challenge Pro Golf (DECO Cassette) (Japan) -> [cprogolf18]} fbneo",
+            "#jogo {18 Holes Pro Golf (set 1) -> [progolf]} fbneo",
+            "#jogo {1941: Counter Attack (Japan) -> [1941j]} fbneo",
+            "#jogo {1941: Counter Attack (USA 900227) -> [1941u]} fbneo",
+            "#jogo {1941: Counter Attack (World 900227) -> [1941]} fbneo",
+            "#jogo {1941: Counter Attack (World) -> [1941r1]} fbneo",
+            "#jogo {1942 (C64 Music) -> [1942c64]} fbneo",
+            "#jogo {1942 (First Version) -> [1942b]} fbneo",
+            "#jogo {1942 (Revision A) -> [1942a]} fbneo",
+            "#jogo {1942 (Revision A, bootleg) -> [1942abl]} fbneo",
+            "#jogo {1942 (Revision B) -> [1942]} fbneo",
+            "#jogo {1942 (Williams Electronics license) -> [1942w]} fbneo",
+            "#jogo {1943 Kai: Midway Kaisen (Japan) -> [1943kai]} fbneo",
+            "#jogo {1943: Battle of Midway (bootleg, hack of Japan set, set 1) -> [1943b]} fbneo",
+            "#jogo {1943: Battle of Midway (bootleg, hack of Japan set, set 2) -> [1943b2]} fbneo",
+            "#jogo {1943: Midway Kaisen (bootleg) -> [1943bj]} fbneo",
+            "#jogo {1943: Midway Kaisen (Japan) -> [1943ja]} fbneo",
+            "#jogo {1943: Midway Kaisen (Japan, no protection hack) -> [1943jah]} fbneo",
+            "#jogo {1943: Midway Kaisen (Japan, no protection hack, alt) -> [1943jaha]} fbneo",
+            "#jogo {1943: Midway Kaisen (Japan, Rev B) -> [1943j]} fbneo",
+            "#jogo {1943: The Battle of Midway (Euro) -> [1943]} fbneo",
+            "#jogo {1943: The Battle of Midway (US) -> [1943ua]} fbneo",
+            "#jogo {1943: The Battle of Midway (US, Rev C) -> [1943u]} fbneo",
+            "#jogo {1943: The Battle of Midway Mark II (US) -> [1943mii]} fbneo",
+            "#jogo {1944: The Loop Master (Europe 000620) -> [1944]} fbneo",
+            "#jogo {1944: The Loop Master (Japan 000620) -> [1944j]} fbneo",
+            "#jogo {1944: The Loop Master (USA 000620 alt Phoenix Edition) (bootleg) -> [1944ad]} fbneo",
+            "#jogo {1944: The Loop Master (USA 000620 Phoenix Edition) (bootleg) -> [1944d]} fbneo",
+            "#jogo {1944: The Loop Master (USA 000620) -> [1944u]} fbneo",
+            "#jogo {1945 Er Dai / 1945 Part-2 (Chinese hack of Battle Garegga) -> [bgareggabl]} fbneo",
+            "#jogo {1945k III (newer, OPCX1 PCB) -> [1945kiiin]} fbneo",
+            "#jogo {1945k III (newer, OPCX2 PCB) -> [1945kiii]} fbneo",
+            "#jogo {1945k III (older, OPCX1 PCB) -> [1945kiiio]} fbneo",
+            "#jogo {1991 Spikes (Italian bootleg, set 1) -> [spikes91]} fbneo",
+            "#jogo {1991 Spikes (Italian bootleg, set 2) -> [spikes91b]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Asia 951207) -> [19xxar1]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Asia 960104) -> [19xxa]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Brazil 951218) -> [19xxb]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Europe 960104) -> [19xx]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Hispanic 951218) -> [19xxh]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Japan 951207) -> [19xxjr2]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Japan 951225) -> [19xxjr1]} fbneo",
+            "#jogo {19XX: The War Against Destiny (Japan 960104, yellow case) -> [19xxj]} fbneo",
+            "#jogo {19XX: The War Against Destiny (USA 951207 Phoenix Edition) (bootleg) -> [19xxd]} fbneo",
+            "#jogo {19XX: The War Against Destiny (USA 951207) -> [19xxu]} fbneo",
+            "#jogo {19YY (Neo CD conversion, ADK World) -> [19yy]} fbneo",
+            "#jogo {19YY (Neo CD conversion, ADK World)(Original release) -> [19yyo]} fbneo",
+            "#jogo {2 On 2 Open Ice Challenge (rev 1.21) -> [openice]} fbneo",
+            "#jogo {2 On 2 Open Ice Challenge (rev 1.2A) -> [openicea]} fbneo",
+            "#jogo {2020 Super Baseball (Neo CD conversion) -> [2020bbcd]} fbneo",
+            "#jogo {2020 Super Baseball (set 1) -> [2020bb]} fbneo",
+            "#jogo {2020 Super Baseball (set 2) -> [2020bba]} fbneo",
+            "#jogo {2020 Super Baseball (set 3) -> [2020bbh]} fbneo",
+            "#jogo {240p Test Suite (v1.0) -> [test240p]} fbneo",
+            "#jogo {3 Count Bout / Fire Suplex (NGM-043 ~ NGH-043) -> [3countb]} fbneo",
+            "#jogo {3 Count Bout / Fire Suplex (NGM-043) -> [3countba]} fbneo",
+            "#jogo {3 On 3 Dunk Madness (US, prototype? 1997/02/04) -> [3on3dunk]} fbneo",
+            "#jogo {3-D Thunder Ceptor II -> [tceptor2]} fbneo",
+            "#jogo {3X3 Puzzle (Enterprise) -> [3x3puzzl]} fbneo",
+            "#jogo {3X3 Puzzle (Normal) -> [3x3puzzla]} fbneo",
+            "#jogo {4 En Raya (set 1) -> [4enraya]} fbneo",
+            "#jogo {4 En Raya (set 2) -> [4enrayaa]} fbneo",
+            "#jogo {4 Fun in 1 -> [4in1]} fbneo",
+            "#jogo {4 player input test -> [4play]} fbneo",
+            "#jogo {4-D Warriors (315-5162) -> [4dwarrio]} fbneo",
+            "#jogo {600 -> [600]} fbneo",
+            "#jogo {64th. Street: A Detective Story (Japan, set 1) -> [64streetj]} fbneo",
+            "#jogo {64th. Street: A Detective Story (Japan, set 2) -> [64streetja]} fbneo",
+            "#jogo {64th. Street: A Detective Story (World) -> [64street]} fbneo",
+            "#jogo {7 Ordi (Korea) -> [7ordi]} fbneo",
+            "#jogo {800 Fathoms -> [800fath]} fbneo",
+            "#jogo {800 Fathoms (older) -> [800fatha]} fbneo",
+            "#jogo {A. D. 2083 -> [ad2083]} fbneo",
+            
+            // --- SNES ---
+            "#jogo {2020 Super Baseball (Japan)} snes",
+            "#jogo {3 Ninjas Kick Back (USA)} snes",
+            "#jogo {3x3 Eyes - Juuma Houkan (Japan)} snes",
+            "#jogo {3x3 Eyes - Seima Kourinden (Japan)} snes",
+            "#jogo {46 Okunen Monogatari - Harukanaru Eden e (Japan)} snes",
+            "#jogo {4-nin Shougi (Japan)} snes",
+            "#jogo {7th Saga, The (USA)} snes",
+            "#jogo {90 Minutes - European Prime Goal (Europe)} snes",
+            "#jogo {'96 Zenkoku Koukou Soccer Senshuken (Japan)} snes",
+            "#jogo {Aaahh!!! Real Monsters (Europe)} snes",
+            "#jogo {Aaahh!!! Real Monsters (USA)} snes",
+            "#jogo {ABC Monday Night Football (Japan)} snes",
+            "#jogo {ABC Monday Night Football (USA)} snes",
+            "#jogo {Accele Brid (Japan)} snes",
+            "#jogo {Ace o Nerae! (Japan)} snes",
+            "#jogo {ACME Animation Factory (Europe)} snes",
+            "#jogo {ACME Animation Factory (USA)} snes",
+            "#jogo {Action Pachio (Japan)} snes",
+            "#jogo {ActRaiser 2 - Chinmoku e no Seisen (Japan)} snes",
+            "#jogo {ActRaiser 2 (USA)} snes",
+            "#jogo {ActRaiser (Europe)} snes",
+            "#jogo {ActRaiser (France)} snes",
+            "#jogo {ActRaiser (Germany)} snes",
+            "#jogo {Actraiser (Japan)} snes",
+            "#jogo {ActRaiser (USA)} snes",
+            "#jogo {Addams Family, The (Japan)} snes",
+            "#jogo {Addams Family, The - Pugsley's Scavenger Hunt (Europe)} snes",
+            "#jogo {Addams Family, The - Pugsley's Scavenger Hunt (USA)} snes",
+            "#jogo {Addams Family, The (USA)} snes",
+            "#jogo {Advanced Dungeons & Dragons - Eye of the Beholder (USA)} snes",
+            "#jogo {Adventures of Batman & Robin, The (Europe)} snes",
+            "#jogo {Adventures of Batman & Robin, The (USA)} snes",
+            "#jogo {Adventures of Dr. Franken, The (USA)} snes",
+            "#jogo {Adventures of Mighty Max, The (Europe)} snes",
+            "#jogo {Adventures of Rocky and Bullwinkle and Friends, The (USA)} snes",
+            "#jogo {Adventures of the Rocketeer, The (Japan)} snes",
+            "#jogo {Adventures of Yogi Bear (USA)} snes",
+            "#jogo {Aerobiz Supersonic (USA)} snes",
+            "#jogo {Aerobiz (USA)} snes",
+            "#jogo {Aero Fighters (USA)} snes",
+            "#jogo {Aero the Acro-Bat 2 (Europe)} snes",
+            "#jogo {Aero the Acro-Bat 2 (USA)} snes",
+            "#jogo {Aero the Acro-Bat (Europe)} snes",
+            "#jogo {Aero the Acro-Bat (USA)} snes",
+            "#jogo {Aguri Suzuki F-1 Super Driving (Europe)} snes",
+            "#jogo {AIII S.V. - A Ressha de Ikou 3 - Super Version (Japan)} snes",
+            "#jogo {Air Cavalry (Europe)} snes",
+            "#jogo {Air Cavalry (USA)} snes",
+            "#jogo {Air Management II - Koukuu Ou o Mezase (Japan)} snes",
+            "#jogo {Air Management - Oozora ni Kakeru (Japan)} snes",
+            "#jogo {Akagawa Jirou - Majo-tachi no Nemuri (Japan)} snes",
+            "#jogo {Akazukin Chacha (Japan)} snes",
+            "#jogo {Akumajou Dracula (Japan)} snes",
+            "#jogo {Akumajou Dracula XX (Japan)} snes",
+            "#jogo {Aladdin (Europe)} snes",
+            "#jogo {Aladdin (France)} snes",
+            "#jogo {Aladdin (Germany)} snes",
+            "#jogo {Aladdin (Japan)} snes",
+            "#jogo {Aladdin (Spain)} snes",
+            "#jogo {Aladdin (USA)} snes",
+            "#jogo {Super Mario World (USA)} snes"
+        ];
+
+        const input = document.getElementById('gameSearchInput');
+        const listContainer = document.getElementById('suggestionsList');
+        const feedback = document.getElementById('copyFeedback');
+        
+        let currentFocus = -1;
+
+        // Filtrar e exibir sugestões com base na digitação
+        input.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            listContainer.innerHTML = '';
+            currentFocus = -1;
+
+            if (query.length === 0) {
+                listContainer.style.display = 'none';
+                return;
+            }
+
+            const matches = rawJogosList.filter(jogo => jogo.toLowerCase().includes(query));
+
+            if (matches.length === 0) {
+                listContainer.style.display = 'none';
+                return;
+            }
+
+            matches.forEach((jogo) => {
+                const item = document.createElement('div');
+                item.classList.add('suggestion-item');
+                item.textContent = jogo;
+                
+                item.addEventListener('click', function() {
+                    copiarTexto(jogo);
+                });
+
+                listContainer.appendChild(item);
+            });
+
+            listContainer.style.display = 'block';
+        });
+
+        // Navegação por teclado (Setas e Enter)
+        input.addEventListener('keydown', function(e) {
+            const items = listContainer.getElementsByClassName('suggestion-item');
+            
+            if (e.keyCode == 40) { // Seta para baixo
+                currentFocus++;
+                addActive(items);
+            } else if (e.keyCode == 38) { // Seta para cima
+                currentFocus--;
+                addActive(items);
+            } else if (e.keyCode == 13) { // Enter
+                e.preventDefault();
+                if (currentFocus > -1 && items[currentFocus]) {
+                    items[currentFocus].click();
+                }
+            }
+        });
+
+        function addActive(items) {
+            if (!items) return false;
+            removeActive(items);
+            if (currentFocus >= items.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (items.length - 1);
+            items[currentFocus].classList.add('active');
+            items[currentFocus].scrollIntoView({ block: 'nearest' });
+        }
+
+        function removeActive(items) {
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.remove('active');
+            }
+        }
+
+        function copiarTexto(texto) {
+            navigator.clipboard.writeText(texto).then(() => {
+                input.value = texto;
+                listContainer.style.display = 'none';
+                feedback.textContent = `Copiado com sucesso: ${texto}`;
+                setTimeout(() => {
+                    feedback.textContent = '';
+                }, 3000);
+            }).catch(err => {
+                console.error('Erro ao copiar: ', err);
+            });
+        }
+
+        // Fechar lista ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (e.target !== input && e.target !== listContainer) {
+                listContainer.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
