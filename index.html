@@ -22,11 +22,11 @@
         }
         .stream-container {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
             height: 0;
             overflow: hidden;
             border-radius: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             background: #2d2d2d;
         }
         .stream-container iframe {
@@ -36,17 +36,6 @@
             width: 100%;
             height: 100%;
             border: 0;
-        }
-        .chat-mock {
-            width: 100%;
-            height: 150px;
-            background: #2d2d2d;
-            border-radius: 8px;
-            padding: 10px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: #aaa;
         }
         .search-title {
             font-size: 0.95rem;
@@ -114,19 +103,13 @@
 <body>
 
     <div class="container container-stream">
-        <!-- Player da Live Integrado (YouTube) -->
+        <!-- Player da Live do YouTube (Com suporte a player e chat interativo integrado) -->
         <div class="stream-container">
-            <iframe src="https://www.youtube.com/embed/_9Ho31qGSqw" 
+            <iframe src="https://www.youtube.com/embed/_9Ho31qGSqw?autoplay=1&enablejsapi=1" 
                     title="Live do YouTube" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
             </iframe>
-        </div>
-
-        <!-- Chat da Live (Mockup) -->
-        <div class="chat-mock">
-            <strong>Chat da Live:</strong><br>
-            <span style="color: #6c757d;">[19:48] Viewer1: Salve Leandro!</span><br>
-            <span style="color: #6c757d;">[19:48] Viewer2: Manda aquele briga de rua snes!</span>
         </div>
 
         <hr class="border-secondary my-4">
@@ -306,7 +289,6 @@
         
         let currentFocus = -1;
 
-        // Filtrar e exibir sugestões com base na digitação
         input.addEventListener('input', function() {
             const query = this.value.trim().toLowerCase();
             listContainer.innerHTML = '';
@@ -339,17 +321,16 @@
             listContainer.style.display = 'block';
         });
 
-        // Navegação por teclado (Setas e Enter)
         input.addEventListener('keydown', function(e) {
             const items = listContainer.getElementsByClassName('suggestion-item');
             
-            if (e.keyCode == 40) { // Seta para baixo
+            if (e.keyCode == 40) {
                 currentFocus++;
                 addActive(items);
-            } else if (e.keyCode == 38) { // Seta para cima
+            } else if (e.keyCode == 38) {
                 currentFocus--;
                 addActive(items);
-            } else if (e.keyCode == 13) { // Enter
+            } else if (e.keyCode == 13) {
                 e.preventDefault();
                 if (currentFocus > -1 && items[currentFocus]) {
                     items[currentFocus].click();
@@ -385,7 +366,6 @@
             });
         }
 
-        // Fechar lista ao clicar fora
         document.addEventListener('click', function(e) {
             if (e.target !== input && e.target !== listContainer) {
                 listContainer.style.display = 'none';
